@@ -1,35 +1,35 @@
 package com.github.toshiyag.cryptors.common;
 
 
-public interface Message<T extends Sentence> {
+public interface Message<T extends Text> {
 
     String toString();
     Class<T> messageType();
 
-    static Message<Sentence.Plain> plain(final String sentence) {
-        return new Message<Sentence.Plain>() {
+    static Message<Text.Plain> plain(final String sentence) {
+        return new Message<Text.Plain>() {
             @Override
             public String toString() {
                 return sentence;
             }
 
             @Override
-            public Class<Sentence.Plain> messageType() {
-                return Sentence.Plain.class;
+            public Class<Text.Plain> messageType() {
+                return Text.Plain.class;
             }
         };
     }
 
-    static Message<Sentence.Encrypted> encrypted(final String sentence) {
-        return new Message<Sentence.Encrypted>() {
+    static Message<Text.Encrypted> encrypted(final String sentence) {
+        return new Message<Text.Encrypted>() {
             @Override
             public String toString() {
                 return sentence;
             }
 
             @Override
-            public Class<Sentence.Encrypted> messageType() {
-                return Sentence.Encrypted.class;
+            public Class<Text.Encrypted> messageType() {
+                return Text.Encrypted.class;
             }
         };
     }

@@ -4,7 +4,7 @@ package com.github.toshiyag.cryptors.aes;
 import com.github.toshiyag.cryptors.common.Decryptor;
 import com.github.toshiyag.cryptors.common.Encryptor;
 import com.github.toshiyag.cryptors.common.Message;
-import com.github.toshiyag.cryptors.common.Sentence;
+import com.github.toshiyag.cryptors.common.Text;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -34,7 +34,7 @@ public class AESCrypt implements Encryptor, Decryptor {
     }
 
     @Override
-    public Message<Sentence.Plain> decrypt(final Message<Sentence.Encrypted> encryptedMessage) {
+    public Message<Text.Plain> decrypt(final Message<Text.Encrypted> encryptedMessage) {
         final Base64.Decoder decoder = Base64.getDecoder();
         final byte[] messageBytes = decoder.decode(encryptedMessage.toString().getBytes());
         final byte[] decryptedBytes = crypt(CryptMethod.DECRYPT, this.secretKeySpec, this.ivParameterSpec, messageBytes);
@@ -42,7 +42,7 @@ public class AESCrypt implements Encryptor, Decryptor {
     }
 
     @Override
-    public Message<Sentence.Encrypted> encrypt(final Message<Sentence.Plain> plainMessage) {
+    public Message<Text.Encrypted> encrypt(final Message<Text.Plain> plainMessage) {
         final byte[] messageBytes = plainMessage.toString().getBytes();
         final byte[] encryptedBytes = crypt(CryptMethod.ENCRYPT, this.secretKeySpec, this.ivParameterSpec, messageBytes);
         final Base64.Encoder encoder = Base64.getEncoder();

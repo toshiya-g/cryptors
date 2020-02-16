@@ -1,12 +1,12 @@
 package com.github.toshiyag.cryptors.common;
 
-public interface Sentence {
+public interface Text {
 
-    final class Plain implements Sentence {
+    final class Plain implements Text {
         private Plain() {}
     }
 
-    final class Encrypted implements Sentence {
+    final class Encrypted implements Text {
         private Encrypted() {}
     }
 }
